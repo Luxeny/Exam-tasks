@@ -3,44 +3,32 @@ using namespace std;
 
 int main() {
     
-    int x, y;
-
-    cout << "Введите размеры матрицы." << endl;
-    cout << "Введите количество строк: ";
-    cin >> x;
-    cout << "Введите количество столбцов: ";
-    cin >> y;
+    int n;
+    cout << "Введите размер массива: ";
+    cin >> n;
     
-    if (x > 5 || y > 5) {
-        cout << "Матрица не должна превыщать 5 x 5.";
-        return 1;
-    }
-    
-    // создаем матрицу
-    int matrix[x][y];
+    // создаем массив
+    int array[n];
 
-    cout << "Введите элементы матрицы:" << endl;
-    for (int i = 0; i < x; i++) {
-        for (int j = 0; j < y; j++) {
-            cout << "Элемент[" << i << "][" << j << "]: ";
-            cin >> matrix[i][j];
-        }
+    cout << "Введите элементы массива:" << endl;
+    for (int i = 0; i < n; i++) {
+        cout << "Элемент[" << i << "]: ";
+        cin >> array[i];
     }
 
-    // инвертирование элементов матрицы
-    for (int i = 0; i < x; i++) {
-        for (int j = 0; j < y / 2; j++) {
-            int temp = matrix[i][j];
-            matrix[i][j] = matrix[i][y - 1 - j];
-            matrix[i][y - 1 - j] = temp;
-        }
+    // инвертирование элементов массива
+    for (int i = 0; i < n / 2; i++) {
+        int temp = array[i];
+        array[i] = array[n-1-i];
+        array[n-1-i] = temp;
     }
 
-    cout << endl << "Инвертированная матрица:" << endl;
-    for (int i = 0; i < x; i++) {
-        for (int j = 0; j < y; j++) {
-            cout << matrix[i][j] << "\t";
+    cout << endl << "Инвертированный массив: " << endl << "{ ";
+    for (int i = 0; i < n; i++) {
+        if (i != n-1) {
+            cout << array[i] << ", ";
         }
-        cout << endl;
+        else { cout << array[i] << " "; }
     }
+    cout << "}";
 }
