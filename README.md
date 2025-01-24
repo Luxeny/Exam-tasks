@@ -1,3 +1,4 @@
+- ### Ответы на вопросы к экзамену - [Программирование от А до Я](https://docs.google.com/spreadsheets/d/1lr44XEDsHwRocFPMpMzIEDMQr0SpBjEp6g6FZkfUpwU/edit?usp=sharing)
 # Задания к экзамену
 
 1. Нахождение суммы и произведения элементов массива.
