@@ -1,49 +1,54 @@
 #include <iostream>
+
 using namespace std;
 
 int main() {
     
-    int x, y;
-    cout << "Введите размеры матрицы." << endl << "Количество строк: ";
-    cin >> x;
-    cout << "Количество столбцов: ";
-    cin >> y;
+    int rowCount, columnCount;
+    
+    cout << "Enter the matrix dimensions." << endl << "Count of rows:";
+    cin >> rowCount;
+    cout << "Count of columns: ";
+    cin >> columnCount;
     
     // Проверка размеров матрицы
-    if (x > 5 || y > 5) {
-        cout << "Массив не должен превышать размеры 5x5";
+    if (rowCount > 5 || columnCount > 5) {
+        cout << "The array must not exceed 5x5 dimensions!";
         return 1;
     }
     
-    int matrix[x][y];
+    int matrix[rowCount][columnCount];
     
-    cout << "Введите элементы матрицы." << endl;
-    for (int i=0; i<x; i++) {
-        for (int j=0; j<y; j++) {
-            cout << "Элемент " << i+1 << " строки, " << j+1 << " столбца: ";
-            cin >> matrix[i][j];
+    // Инициализация матрицы
+    cout << "Enter the matrix elements." << endl;
+    for (int rowIndex = 0; rowIndex < rowCount; ++rowIndex) {
+        for (int columnIndex = 0; columnIndex < columnCount; ++columnIndex) {
+            cout << "Element " << rowIndex + 1 << " row, " << columnIndex + 1 << " column: ";
+            cin >> matrix[rowIndex][columnIndex];
         }
     }
     
-    cout << "Матрица:" << endl;
-    for (int i = 0; i < x; i++) {
-        for (int j = 0; j < y; j++) {
-            cout << matrix[i][j] << "\t";
+    // Вывод матрицы
+    cout << "Matrix:" << endl;
+    for (int rowIndex = 0; rowIndex < rowCount; ++rowIndex) {
+        for (int columnIndex = 0; columnIndex < columnCount; ++columnIndex) {
+            cout << matrix[rowIndex][columnIndex] << "\t";
         }
         cout << endl;
     }
     
-    int max = matrix[0][0], min = matrix[0][0], xmin=0, ymin=0, xmax=0, ymax=0;
+    int elementMax = matrix[0][0], elementMin = matrix[0][0];
+    int rowMinElement = 0, columnMinElement = 0, rowMaxElement = 0, columnMaxElement = 0;
     
-    for (int i=0; i<x; i++) {
-        for (int j=0; j<y; j++) {
-            if (matrix[i][j] > max) {max = matrix[i][j]; xmax = i; ymax = j;}
-            if (matrix[i][j] < min) {min = matrix[i][j]; xmin = i; ymin = j;}
+    for (int rowIndex = 0; rowIndex < rowCount; ++rowIndex) {
+        for (int columnIndex = 0; columnIndex < columnCount; ++columnIndex) {
+            if (matrix[rowIndex][columnIndex] > elementMax) {elementMax = matrix[rowIndex][columnIndex]; rowMaxElement = rowIndex; columnMaxElement = columnIndex;}
+            if (matrix[rowIndex][columnIndex] < elementMin) {elementMin = matrix[rowIndex][columnIndex]; rowMinElement = rowIndex; columnMinElement = columnIndex;}
         }
     }
     
-    matrix[xmax][ymax] = min;
-    matrix[xmin][ymin] = max;
+    matrix[rowMaxElement][columnMaxElement] = elementMin;
+    matrix[rowMinElement][columnMinElement] = elementMax;
     
     // поменялись макс и мин элементы
     cout << endl << "Матрица обновлена:" << endl;
