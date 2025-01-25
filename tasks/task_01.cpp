@@ -1,33 +1,35 @@
 #include <iostream>
+
 using namespace std;
 
 int main() {
-    int size;
+    
+    int arraySize;
 
-    // если нужно создать массив
-    cout << "Введите размер массива: ";
-    cin >> size;
+    cout << "Enter array size: ";
+    cin >> arraySize;
 
     // Проверка на положительность
-    if (size <= 0) {
-        cout << "Размер массива должен быть положительным!" << endl;
+    if (arraySize <= 0) {
+        cout << "The array size must be positive!" << endl;
         return 1;
     }
 
-    int arr[size], sum=0, product=1;
+    int array[arraySize], elementSum = 0, elementProduct = 1;
 
-    // Запрашиваем элементы массива у пользователя
-    cout << "Введите элементы массива:" << endl;
-    for (int i = 0; i < size; i++) {
-        cout << "Элемент " << i + 1 << ": ";
-        cin >> arr[i];
+    // Вводим элементы массива
+    cout << "Enter array elements." << endl;
+    for (int elementIndex = 0; elementIndex < arraySize; ++elementIndex) {
+        
+        cout << "Элемент " << elementIndex + 1 << ": ";
+        cin >> array[elementIndex];
 
-        sum += arr[i];
-        product *= arr[i];
+        sum     += array[elementIndex];
+        product *= array[elementIndex];
     }
 
-    cout << "Сумма элементов: " << sum << endl;
-    cout << "Произведение элементов: " << product << endl;
+    cout << "Сумма элементов: " << elementSum << endl;
+    cout << "Произведение элементов: " << elementProduct << endl;
 
     return 0;
 }
